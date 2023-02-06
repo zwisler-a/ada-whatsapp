@@ -1,17 +1,18 @@
 {
-  "name": "smart-wa",
+  "name": "@ada/whatsapp",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "link": "npm link @ada/lib"
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@adiwajshing/baileys": "^5.0.0",
     "@adiwajshing/keyed-db": "^0.2.4",
+    "@zwisler/ada-lib": "^1.0.0",
     "pino": "^8.8.0",
     "qrcode-terminal": "^0.12.0",
     "rxjs": "^7.8.0"

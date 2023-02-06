@@ -1,4 +1,4 @@
-import { Input, Node, NodeDefinition, Output } from "@ada/lib";
+import { Input, Node, NodeDefinition, Output } from "@zwisler/ada-lib";
 import { WhatsappService } from "./whatsapp-service";
 
 @Node({
