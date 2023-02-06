@@ -7,10 +7,12 @@ export class WhatsappService {
     sendMessage$ = new Subject<{ jid: string, message: AnyMessageContent }>();
 
     messageRecieved(msg: proto.IWebMessageInfo) {
-        this.receivedMessages$.next({
+        const message = {
             fromMe: msg.key.fromMe,
             jid: msg.key.remoteJid,
             message: msg.message.conversation
-        })
+        };
+        console.log(message);
+        this.receivedMessages$.next(message);
     }
 }

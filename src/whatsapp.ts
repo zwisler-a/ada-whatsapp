@@ -91,8 +91,6 @@ const startSock = async (waService: WhatsappService) => {
                         console.log('Connection closed. You are logged out.')
                     }
                 }
-
-                console.log('connection update', update)
             }
 
             // credentials updated -- save them
@@ -102,7 +100,7 @@ const startSock = async (waService: WhatsappService) => {
 
             if (events['messages.upsert']) {
                 const upsert = events['messages.upsert']
-                console.log('recv messages ', JSON.stringify(upsert, undefined, 2))
+                console.log('recv messages')
 
                 if (upsert.type === 'notify') {
                     for (const msg of upsert.messages) {
