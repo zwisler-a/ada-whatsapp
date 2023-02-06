@@ -71,7 +71,7 @@ const startSock = async (waService: WhatsappService) => {
         await sock.sendMessage(jid, msg)
     }
 
-    waService.sendMessage$.subscribe(msg => sendMessageWTyping({ text: msg.message }, msg.jid))
+    waService.sendMessage$.subscribe(msg => sendMessageWTyping(msg.message, msg.jid))
 
     // the process function lets you process all events that just occurred
     // efficiently in a batch
