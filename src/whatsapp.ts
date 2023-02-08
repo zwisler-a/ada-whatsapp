@@ -16,15 +16,15 @@ const msgRetryCounterMap: MessageRetryMap = {}
 // the store maintains the data of the WA connection in memory
 // can be written out to a file & read from it
 const store = useStore ? makeInMemoryStore({ logger }) : undefined
-store?.readFromFile('./baileys_store_multi.json')
+store?.readFromFile(process.env.STORE_PATH ?? './baileys_store_multi.json')
 // save every 10s
 setInterval(() => {
-    store?.writeToFile('./baileys_store_multi.json')
+    store?.writeToFile(process.env.STORE_PATH ?? './baileys_store_multi.json')
 }, 10_000)
 
 // start a connection
 const startSock = async (waService: WhatsappService) => {
-    const { state, saveCreds } = await useMultiFileAuthState('baileys_auth_info')
+    const { state, saveCreds } = await useMultiFileAuthState(process.env.AUTH_PATH ?? 'baileys_auth_info')
     // fetch latest version of WA Web
     const { version, isLatest } = await fetchLatestBaileysVersion()
     console.log(`using WA v${version.join('.')}, isLatest: ${isLatest}`)
@@ -60,6 +60,7 @@ const startSock = async (waService: WhatsappService) => {
     store?.bind(sock.ev)
 
     const sendMessageWTyping = async (msg: AnyMessageContent, jid: string) => {
+        console.log('sending', jid, msg);
         await sock.presenceSubscribe(jid)
         await delay(500)
 
