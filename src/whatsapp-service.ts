@@ -10,9 +10,13 @@ export class WhatsappService {
         const message = {
             fromMe: msg.key.fromMe,
             jid: msg.key.remoteJid,
-            message: msg.message.conversation
+            message: this.extractText(msg)
         };
         console.log(message);
         this.receivedMessages$.next(message);
+    }
+
+    private extractText(msg: proto.IWebMessageInfo): string {
+        return msg.message.conversation || msg.message.extendedTextMessage.text
     }
 }

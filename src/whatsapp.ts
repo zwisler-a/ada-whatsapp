@@ -70,6 +70,8 @@ const startSock = async (waService: WhatsappService) => {
         await sock.sendPresenceUpdate('paused', jid)
 
         await sock.sendMessage(jid, msg)
+        await sock.sendPresenceUpdate('unavailable', jid)
+
     }
 
     waService.sendMessage$.subscribe(msg => sendMessageWTyping(msg.message, msg.jid))
@@ -105,6 +107,7 @@ const startSock = async (waService: WhatsappService) => {
 
                 if (upsert.type === 'notify') {
                     for (const msg of upsert.messages) {
+                        console.log(msg)
                         waService.messageRecieved(msg);
                     }
                 }
