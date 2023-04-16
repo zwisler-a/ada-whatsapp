@@ -107,7 +107,6 @@ const startSock = async (waService: WhatsappService) => {
 
                 if (upsert.type === 'notify') {
                     for (const msg of upsert.messages) {
-                        console.log(msg)
                         waService.messageRecieved(msg);
                     }
                 }
