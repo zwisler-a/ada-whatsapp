@@ -1,4 +1,4 @@
-import { AnyMessageContent, proto } from "@adiwajshing/baileys";
+import { AnyMessageContent, proto } from "@whiskeysockets/baileys";
 import { Subject } from "rxjs";
 
 export class WhatsappService {
